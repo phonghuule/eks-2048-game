@@ -70,6 +70,8 @@ The *bootstrap.sh* script will:
 
   ![Cloud9 Terminal](./setup/images/cloud9-terminal.png)
 
+Note: If the script is stuck at creating SSH Key Pair, please hit enter, the script will continue
+
 ## Lab
 
 ### Step 0
@@ -243,10 +245,10 @@ Double check the EKS Cluster stack created by eksctl was deleted:
 
 ### Step 3
 
-Delete the Cloud 9 CloudFormation stack named **devlab-eks-alb-2048game** from AWS Console:
+Delete the Cloud 9 CloudFormation stack named **EKS-ALB-2048-Game** from AWS Console:
 
 - Launch [AWS CloudFormation Console](https://console.aws.amazon.com/cloudformation/home)
-- Select stack **devlab-eks-alb-2048game**.
+- Select stack **EKS-ALB-2048-Game**.
 - In the stack details pane, choose *Delete*.
 - Select *Delete* stack when prompted.
 
@@ -254,3 +256,7 @@ Delete the Cloud 9 CloudFormation stack named **devlab-eks-alb-2048game** from A
 
 - [Kubernetes Ingress with AWS ALB Ingress Controller](https://aws.amazon.com/blogs/opensource/kubernetes-ingress-aws-alb-ingress-controller/)
 - [Github repository for AWS ALB Ingress Controller](https://github.com/kubernetes-sigs/aws-alb-ingress-controller)
+
+## Survey
+Please help us to provide your feedback [here](https://amazonmr.au1.qualtrics.com/jfe/form/SV_6x7UgBL9FHn59dA?Session=HOL4).
+Participants who complete the surveys from AWS Innovate Online Conference - Modern Applications Edition will receive a gift code for USD25 in AWS credits. AWS credits will be sent via email by 30 November, 2021.
