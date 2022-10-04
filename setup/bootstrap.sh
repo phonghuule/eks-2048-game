@@ -21,7 +21,7 @@ source ~/.bash_profile
 
 echo "Installing kubectl"
 
-curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.17.12/2020-11-02/bin/linux/amd64/kubectl
+curl -o kubectl https://s3.us-west-2.amazonaws.com/amazon-eks/1.23.7/2022-06-29/bin/darwin/amd64/kubectl
 chmod +x ./kubectl
 mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
 kubectl version --short --client
@@ -67,7 +67,7 @@ if [ "$REGION" == "us-east-1" ]; then
     ZONES="--zones=$AZs"
 fi
 
-eksctl create cluster --ssh-access --node-type t3.medium --node-private-networking --name=$EKS_CLUSTER_NAME $ZONES --version 1.17
+eksctl create cluster --ssh-access --node-type t3.medium --node-private-networking --name=$EKS_CLUSTER_NAME $ZONES --version 1.20
 
 # Setup IRSA for ALB Ingress Controller
 
