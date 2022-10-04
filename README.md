@@ -187,7 +187,7 @@ service-2048   NodePort   10.100.49.101   <none>        80:32667/TCP   42h
 Deploy ALB Ingress resource to expose 2048 Game via AWS Application Load Balancer.
 
 ```
-kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/v1.1.4/docs/examples/2048/2048-ingress.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.4.4/docs/examples/2048/2048_full.yaml
 ```
 
 After a few minutes, verify that the Ingress resource was created with the following command. 
