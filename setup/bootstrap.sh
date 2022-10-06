@@ -97,10 +97,9 @@ curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 > get
 chmod 700 get_helm.sh
 ./get_helm.sh
 
-echo; echo "Install the TargetGroupBinding custom resource definitions (CRDs)"
-helm repo add eks https://aws.github.io/eks-charts
-
-echo; echo "Add Amazon EKS Chart repo to Helm"
-kubectl apply -k "github.com/aws/eks-charts/stable/aws-load-balancer-controller//crds?ref=master"
-
 echo; echo "Lab is ready to use."
+
+
+
+
+

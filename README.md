@@ -204,18 +204,6 @@ After few seconds, verify that the Ingress resource is enabled:
 kubectl get ingress/ingress-2048 -n game-2048
 ```
 
-Create a namespace for 2048 game.
-
-```
-kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/v1.1.4/docs/examples/2048/2048-namespace.yaml
-```
-
-Verify the namespace has been created:
-
-```
-kubectl get ns
-```
-
 From your AWS Management Console, if you navigate to the EC2 dashboard and the select Load Balancers from the menu on the left-pane, you should see the details of the ALB instance similar to the following. 
 
 ![Load Balancer](./setup/images/LoadBalancer.png)
@@ -236,27 +224,6 @@ Illustration of request routing from an AWS Application Load Balancer to Fargate
 
 ### Step 5
 
-Create a deployment to run 2048 game application pods.
-
-```
-kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/v1.1.4/docs/examples/2048/2048-deployment.yaml
-```
-
-Verify the deployment has been created:
-
-```
-kubectl get deployment -n 2048-game
-```
-
-Expected output:
-
-```
-NAME              READY   UP-TO-DATE   AVAILABLE   AGE
-2048-deployment   5/5     5            5           42h
-```
-
-### Step 6
-
 At this point, your deployment is complete and you should be able to reach the game-2048 service from a browser using the DNS name of the ALB. You may get the DNS name of the load balancer either from the AWS Management Console or from the output of the following command.
 
 ```
@@ -270,7 +237,7 @@ Output should look like this:
 http://3e100955-2048game-2048ingr-6fa0-1056911976.us-east-2.elb.amazonaws.com
 ```
 
-### Step 7
+### Step 6
 
 Open a browser and navigate to the ALB endpoint to see the 2048 game application.
 
