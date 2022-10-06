@@ -13,7 +13,7 @@ sudo ntpstat || true
 
 echo "Upgrade awscli"
 
-pip3 install --upgrade --user awscli
+pip3 install --upgrade pip --user awscli
 echo 'PATH=$HOME/.local/bin:$PATH' >> ~/.bash_profile
 source ~/.bash_profile
 
@@ -21,7 +21,7 @@ source ~/.bash_profile
 
 echo "Installing kubectl"
 
-curl -o kubectl https://s3.us-west-2.amazonaws.com/amazon-eks/1.23.7/2022-06-29/bin/darwin/amd64/kubectl
+curl -o kubectl https://s3.us-west-2.amazonaws.com/amazon-eks/1.22.6/2022-03-09/bin/linux/amd64/kubectl
 chmod +x ./kubectl
 mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
 kubectl version --short --client
@@ -67,9 +67,9 @@ if [ "$REGION" == "us-east-1" ]; then
     ZONES="--zones=$AZs"
 fi
 
-eksctl create cluster --ssh-access --node-type t3.medium --node-private-networking --name=$EKS_CLUSTER_NAME $ZONES --version 1.20
+eksctl create cluster --ssh-access --name=$EKS_CLUSTER_NAME $ZONES --version 1.21 --fargate
 
-# Setup IRSA for ALB Ingress Controller
+# To allow the cluster to use AWS Identity and Access Management (IAM) for service accounts
 
 eksctl utils associate-iam-oidc-provider --cluster $EKS_CLUSTER_NAME --approve
 
@@ -78,17 +78,29 @@ POLICY_ARN=$(aws iam list-policies --query "Policies[?PolicyName=='ALBIngressCon
 if [ "$POLICY_ARN" == "" ]; then
     aws iam create-policy \
         --policy-name ALBIngressControllerIAMPolicy \
-        --policy-document https://raw.githubusercontent.com/kubernetes-sigs/aws-alb-ingress-controller/v1.1.4/docs/examples/iam-policy.json
+        --policy-document https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.4.1/docs/install/iam_policy.json
 
     POLICY_ARN=$(aws iam list-policies --query "Policies[?PolicyName=='ALBIngressControllerIAMPolicy'].Arn" --output text)
 fi
 
 eksctl create iamserviceaccount \
-    --name alb-ingress-controller \
+    --name aws-load-balancer-controller \
     --namespace kube-system \
     --cluster $EKS_CLUSTER_NAME \
     --attach-policy-arn $POLICY_ARN \
     --override-existing-serviceaccounts \
     --approve
+
+echo; echo "Install Helm"
+
+curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 > get_helm.sh
+chmod 700 get_helm.sh
+./get_helm.sh
+
+echo; echo "Install the TargetGroupBinding custom resource definitions (CRDs)"
+helm repo add eks https://aws.github.io/eks-charts
+
+echo; echo "Add Amazon EKS Chart repo to Helm"
+kubectl apply -k "github.com/aws/eks-charts/stable/aws-load-balancer-controller//crds?ref=master"
 
 echo; echo "Lab is ready to use."
