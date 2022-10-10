@@ -276,5 +276,5 @@ Delete the Cloud 9 CloudFormation stack named **EKS-ALB-2048-Game** from AWS Con
 
 ## Reference
 
-- [Kubernetes Ingress with AWS ALB Ingress Controller](https://aws.amazon.com/blogs/opensource/kubernetes-ingress-aws-alb-ingress-controller/)
-- [Github repository for AWS ALB Ingress Controller](https://github.com/kubernetes-sigs/aws-alb-ingress-controller)
+- [Introducing the AWS Load Balancer Controller](https://aws.amazon.com/blogs/containers/introducing-aws-load-balancer-controller/)
+- [Github repository for AWS Load Balancer Controller](https://github.com/kubernetes-sigs/aws-load-balancer-controller)
