@@ -214,7 +214,7 @@ From the left-pane, if you select Target Groups and look at the registered targe
 
 ![Load Balancer Targets](./setup/images/LoadBalancerTargets.png)
 
-Notice that the pods have been directly registered with the load balancer whereas when we worked with worker nodes in an earlier lab, the IP address of the worker nodes and the NodePort were registered as targets. The latter case is the Instance Mode where Ingress traffic starts at the ALB and reaches the Kubernetes worker nodes through each service’s NodePort and subsequently reaches the pods through the service’s ClusterIP. While running under Fargate, ALB operates in IP Mode, where Ingress traffic starts at the ALB and reaches the Kubernetes pods directly.
+Notice that the pods have been directly registered with the load balancer. When running under Fargate, ALB operates in IP Mode, where Ingress traffic starts at the ALB and reaches the Kubernetes pods directly.
 
 Illustration of request routing from an AWS Application Load Balancer to Pods on worker nodes in Instance mode: 
 
@@ -277,10 +277,15 @@ Delete the Cloud 9 CloudFormation stack named **EKS-ALB-2048-Game** from AWS Con
 - Select *Delete* stack when prompted.
 
 ## Survey
-Let us know what you thought of this lab and how we can improve the experience for you in the future by completing [this session poll](https://amazonmr.au1.qualtrics.com/jfe/form/SV_ehwTCMiRy46skbY?Session=HOL002). Participants who complete the surveys from AWS Innovate - Modern Applications Edition will receive a gift code for USD25 in AWS credits1, 2 & 3. AWS credits will be sent via email by November 30, 2022. Note: Only registrants of AWS Innovate - Modern Applications Edition who complete the surveys will receive a gift code for USD25 in AWS credits via email.
-1. AWS Promotional Credits Terms and conditions apply: https://aws.amazon.com/awscredits/
-2. Limited to 1 x USD25 AWS credits per participant.
-3. Participants will be required to provide their business email addresses to receive the gift code for AWS credits.
+Let us know what you thought of this lab and how we can improve the experience for you in the future by completing [this session poll](https://amazonmr.au1.qualtrics.com/jfe/form/SV_ehwTCMiRy46skbY?Session=HOL002). Participants who complete the surveys from AWS Innovate - Modern Applications Edition will receive a gift code for USD25 in AWS credits <sup>1, 2 & 3</sup>. AWS credits will be sent via email by November 30, 2022. 
+
+Note: Only registrants of AWS Innovate - Modern Applications Edition who complete the surveys will receive a gift code for USD25 in AWS credits via email.
+
+<sup>1</sup>AWS Promotional Credits Terms and conditions apply: https://aws.amazon.com/awscredits/
+
+<sup>2</sup>Limited to 1 x USD25 AWS credits per participant.
+
+<sup>3</sup>Participants will be required to provide their business email addresses to receive the gift code for AWS credits.
 
 ## Reference
 
