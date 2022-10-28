@@ -276,17 +276,6 @@ Delete the Cloud 9 CloudFormation stack named **EKS-ALB-2048-Game** from AWS Con
 - In the stack details pane, choose *Delete*.
 - Select *Delete* stack when prompted.
 
-## Survey
-Let us know what you thought of this lab and how we can improve the experience for you in the future by completing [this session poll](https://amazonmr.au1.qualtrics.com/jfe/form/SV_ehwTCMiRy46skbY?Session=HOL002). Participants who complete the surveys from AWS Innovate - Modern Applications Edition will receive a gift code for USD25 in AWS credits <sup>1, 2 & 3</sup>. AWS credits will be sent via email by November 30, 2022. 
-
-Note: Only registrants of AWS Innovate - Modern Applications Edition who complete the surveys will receive a gift code for USD25 in AWS credits via email.
-
-<sup>1</sup>AWS Promotional Credits Terms and conditions apply: https://aws.amazon.com/awscredits/
-
-<sup>2</sup>Limited to 1 x USD25 AWS credits per participant.
-
-<sup>3</sup>Participants will be required to provide their business email addresses to receive the gift code for AWS credits.
-
 ## Reference
 
 - [Introducing the AWS Load Balancer Controller](https://aws.amazon.com/blogs/containers/introducing-aws-load-balancer-controller/)
