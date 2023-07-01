@@ -67,7 +67,7 @@ if [ "$REGION" == "us-east-1" ]; then
     ZONES="--zones=$AZs"
 fi
 
-eksctl create cluster --ssh-access --name=$EKS_CLUSTER_NAME $ZONES --version 1.21 --fargate
+eksctl create cluster --ssh-access --name=$EKS_CLUSTER_NAME $ZONES --version 1.22 --fargate
 
 # To allow the cluster to use AWS Identity and Access Management (IAM) for service accounts
 
